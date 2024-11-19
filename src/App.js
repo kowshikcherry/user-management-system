@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import "./styles.css";
+import Home from "./pages/Home";
 
 const App = () => (
   <Router future={{
@@ -11,7 +11,7 @@ const App = () => (
 >
     <Navbar />
     <Routes>
-      <Route path="/" element={null} />
+      <Route path="/" element={<Home/>} />
       <Route path="/users" element={null} />
       <Route path="*" element={null} />
     </Routes>

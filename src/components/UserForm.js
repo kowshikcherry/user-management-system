@@ -10,6 +10,14 @@ const UserForm = ({ initialData, onSubmit }) => {
   });
 
   useEffect(() => {
+    if (initialData === null) {
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        department: "",
+      });
+    }
     if (initialData) setFormData(initialData);
   }, [initialData]);
 
@@ -31,6 +39,7 @@ const UserForm = ({ initialData, onSubmit }) => {
 
   return (
     <form className="user-form" onSubmit={handleSubmit}>
+      <h2>{initialData === null ? "Adding User" : "Editing User"}</h2>
       <input
         name="firstName"
         value={formData.firstName}
@@ -59,7 +68,9 @@ const UserForm = ({ initialData, onSubmit }) => {
         placeholder="Department"
         required
       />
-      <button type="submit">Submit</button>
+      <button type="submit">
+        {initialData === null ? "AddUser" : `EditUser`}
+      </button>
     </form>
   );
 };

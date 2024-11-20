@@ -7,6 +7,7 @@ import {
 } from "../services/userService";
 import UserList from "../components/UserList";
 import UserForm from "../components/UserForm";
+import Navbar from "../components/Navbar";
 
 const UserManagement = () => {
   const [users, setUsers] = useState([]);
@@ -50,6 +51,7 @@ const UserManagement = () => {
 
   const handleDeleteUser = async (id) => {
     try {
+      setEditingUser(null);
       await deleteUser(id);
       setUsers((prev) => prev.filter((user) => user.id !== id));
     } catch (err) {
@@ -59,7 +61,8 @@ const UserManagement = () => {
 
   return (
     <div>
-      <h2>Manage Users</h2>
+      <Navbar />
+      <h1>Manage Users</h1>
       <UserForm
         initialData={editingUser}
         onSubmit={editingUser ? handleEditUser : handleAddUser}

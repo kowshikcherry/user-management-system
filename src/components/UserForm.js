@@ -71,6 +71,7 @@ const UserForm = ({ initialData, onSubmit }) => {
       <button type="submit">
         {initialData === null ? "AddUser" : `EditUser`}
       </button>
+      {initialData!==null?<button>go to add user</button>:null}
     </form>
   );
 };
